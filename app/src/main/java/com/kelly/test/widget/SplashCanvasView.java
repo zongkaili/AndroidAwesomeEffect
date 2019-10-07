@@ -1,4 +1,4 @@
-package com.kelly.test.widget.canvas;
+package com.kelly.test.widget;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

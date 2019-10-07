@@ -7,16 +7,13 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <ImageView
+    <com.kelly.test.widget.PathMeasureView
+            android:id="@+id/pathMeasureView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/pic_test"/>
-
-    <com.kelly.test.widget.SplashCanvasView
-            android:id="@+id/splash"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:visibility="gone"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

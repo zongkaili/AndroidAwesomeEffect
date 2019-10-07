@@ -38,6 +38,7 @@
         <activity android:name=".BezierActivity"/>
         <activity android:name=".neteasy.musiclist.MusicListActivity"/>
         <activity android:name=".neteasy.playpage.MusicPlayActivity"/>
+        <activity android:name=".PathMeasureActivity"/>
 
     </application>
 
