@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kelly.test.aidl.AIDLTestActivity
+import com.kelly.test.neteasy.musiclist.MusicListActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -34,4 +35,9 @@ class MainActivity : AppCompatActivity() {
     fun bezier(view: View) {
         startActivity(Intent(this, BezierActivity::class.java))
     }
+
+    fun neteasyMusicList(view: View) {
+        startActivity(Intent(this, MusicListActivity::class.java))
+    }
+
 }

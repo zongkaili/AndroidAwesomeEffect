@@ -30,6 +30,7 @@
         <activity android:name=".ExplosionActivity"/>
         <activity android:name=".SplashAnimActivity"/>
         <activity android:name=".BezierActivity"/>
+        <activity android:name=".neteasy.musiclist.MusicListActivity"/>
 
     </application>
 
