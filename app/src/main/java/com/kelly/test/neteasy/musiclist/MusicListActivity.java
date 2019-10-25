@@ -48,7 +48,6 @@ public class MusicListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_list);
-        UIUtils.getInstance(this);
         toolbar = findViewById(R.id.toolbar);
         toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.more));
         toolbar.setTitle("歌单");

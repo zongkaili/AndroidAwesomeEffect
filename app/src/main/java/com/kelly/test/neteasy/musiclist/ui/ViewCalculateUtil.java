@@ -24,7 +24,7 @@ public class ViewCalculateUtil {
      * @param lefMargin
      * @param rightMargin
      */
-    public static void setViewLayoutParam(View view, int width, int height, int topMargin, int bottomMargin, int lefMargin, int rightMargin,
+    public static void setViewRelativeLayoutParam(View view, int width, int height, int topMargin, int bottomMargin, int lefMargin, int rightMargin,
                                           @Nullable boolean asWidth) {
 
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
@@ -47,6 +47,32 @@ public class ViewCalculateUtil {
             layoutParams.rightMargin = UIUtils.getInstance().getWidth(rightMargin);
             view.setLayoutParams(layoutParams);
         } else {
+        }
+    }
+
+    /**
+     * 根据屏幕的大小设置view的高度，间距,方法内不做缩放处理
+     *
+     * @param view
+     * @param width
+     * @param height
+     * @param topMargin
+     * @param bottomMargin
+     * @param lefMargin
+     * @param rightMargin
+     */
+    public static void setViewRelativeLayoutParam(View view, int width, int height, int topMargin, int bottomMargin, int lefMargin, int rightMargin) {
+
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
+
+        if (layoutParams != null) {
+            layoutParams.width = width;
+            layoutParams.height = height;
+            layoutParams.topMargin = topMargin;
+            layoutParams.bottomMargin = bottomMargin;
+            layoutParams.leftMargin = lefMargin;
+            layoutParams.rightMargin = rightMargin;
+            view.setLayoutParams(layoutParams);
         }
     }
 

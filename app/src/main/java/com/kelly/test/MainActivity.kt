@@ -11,6 +11,7 @@ import com.kelly.test.aidl.AIDLTestActivity
 import com.kelly.test.main.GridDividerItemDecoration
 import com.kelly.test.main.RecyclerAdapter
 import com.kelly.test.neteasy.musiclist.MusicListActivity
+import com.kelly.test.neteasy.playpage.MusicPlayActivity
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                     3 -> startActivity(Intent(this@MainActivity, ExplosionActivity::class.java))
                     4 -> startActivity(Intent(this@MainActivity, BezierActivity::class.java))
                     5 -> startActivity(Intent(this@MainActivity, MusicListActivity::class.java))
+                    6 -> startActivity(Intent(this@MainActivity, MusicPlayActivity::class.java))
                 }
             }
         })
@@ -68,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         items.add(MainItem("Canvas-粒子爆炸效果", 3))
         items.add(MainItem("Canvas-贝塞尔曲线", 4))
         items.add(MainItem("网易云音乐歌单界面", 5))
+        items.add(MainItem("网易云音乐播放界面", 6))
         return items
     }
 

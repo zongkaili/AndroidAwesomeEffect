@@ -7,6 +7,7 @@
     <dist:module dist:instant="true"/>
 
     <application
+            android:name=".MyApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -25,12 +26,18 @@
                 android:name=".aidl.StudentManagerService"
                 android:process=":remote"/>
 
+        <service
+                android:name=".neteasy.playpage.service.MusicService"
+                android:enabled="true"
+                android:exported="true" />
+
         <activity android:name=".aidl.AIDLTestActivity"/>
         <activity android:name=".IrregularActivity"/>
         <activity android:name=".ExplosionActivity"/>
         <activity android:name=".SplashAnimActivity"/>
         <activity android:name=".BezierActivity"/>
         <activity android:name=".neteasy.musiclist.MusicListActivity"/>
+        <activity android:name=".neteasy.playpage.MusicPlayActivity"/>
 
     </application>
 
