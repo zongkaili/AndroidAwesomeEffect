@@ -12,6 +12,11 @@ import com.kelly.test.main.GridDividerItemDecoration
 import com.kelly.test.main.RecyclerAdapter
 import com.kelly.test.neteasy.musiclist.MusicListActivity
 import com.kelly.test.neteasy.playpage.MusicPlayActivity
+import com.kelly.test.widget.colorfilter.ColorFilterActivity
+import com.kelly.test.widget.pwdinput.PwdInputActivity
+import com.kelly.test.widget.svg.SvgChinaMapActivity
+import com.kelly.test.widget.treeAnimation.TreeAnimationActivity
+import com.kelly.test.widget.vLayout.VLayoutActivity
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
@@ -55,8 +60,14 @@ class MainActivity : AppCompatActivity() {
                     2 -> startActivity(Intent(this@MainActivity, IrregularActivity::class.java))
                     3 -> startActivity(Intent(this@MainActivity, ExplosionActivity::class.java))
                     4 -> startActivity(Intent(this@MainActivity, BezierActivity::class.java))
-                    5 -> startActivity(Intent(this@MainActivity, MusicListActivity::class.java))
-                    6 -> startActivity(Intent(this@MainActivity, MusicPlayActivity::class.java))
+                    5 -> startActivity(Intent(this@MainActivity, PathMeasureActivity::class.java))
+                    6 -> startActivity(Intent(this@MainActivity, SvgChinaMapActivity::class.java))
+                    7 -> startActivity(Intent(this@MainActivity, VLayoutActivity::class.java))
+                    8 -> startActivity(Intent(this@MainActivity, TreeAnimationActivity::class.java))
+                    9 -> startActivity(Intent(this@MainActivity, MusicListActivity::class.java))
+                    10 -> startActivity(Intent(this@MainActivity, MusicPlayActivity::class.java))
+                    11 -> startActivity(Intent(this@MainActivity, ColorFilterActivity::class.java))
+                    12 -> startActivity(Intent(this@MainActivity, PwdInputActivity::class.java))
                 }
             }
         })
@@ -69,8 +80,14 @@ class MainActivity : AppCompatActivity() {
         items.add(MainItem("Canvas-不规则图形", 2))
         items.add(MainItem("Canvas-粒子爆炸效果", 3))
         items.add(MainItem("Canvas-贝塞尔曲线", 4))
-        items.add(MainItem("网易云音乐歌单界面", 5))
-        items.add(MainItem("网易云音乐播放界面", 6))
+        items.add(MainItem("PathMeasure-用法示例", 5))
+        items.add(MainItem("Svg-中国地图", 6))
+        items.add(MainItem("VLayout-淘宝首页", 7))
+        items.add(MainItem("Bezier-树生长动画", 8))
+        items.add(MainItem("网易云音乐歌单界面", 9))
+        items.add(MainItem("网易云音乐播放界面", 10))
+        items.add(MainItem("ColorFilter", 11))
+        items.add(MainItem("自定义密码输入框", 12))
         return items
     }
 

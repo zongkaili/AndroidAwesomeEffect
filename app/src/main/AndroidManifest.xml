@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:dist="http://schemas.android.com/apk/distribution"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="com.kelly.test">
+        xmlns:dist="http://schemas.android.com/apk/distribution"
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.kelly.test">
 
-    <dist:module dist:instant="true"/>
+    <dist:module dist:instant="true" />
 
     <application
             android:name=".MyApplication"
@@ -17,15 +17,15 @@
             tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <service
                 android:name=".aidl.StudentManagerService"
-                android:process=":remote"/>
+                android:process=":remote" />
 
         <service
                 android:name=".neteasy.playpage.service.MusicService"
@@ -43,6 +43,8 @@
         <activity android:name=".widget.svg.SvgChinaMapActivity" />
         <activity android:name=".widget.vLayout.VLayoutActivity" />
         <activity android:name=".widget.treeAnimation.TreeAnimationActivity" />
+        <activity android:name=".widget.colorfilter.ColorFilterActivity" />
+        <activity android:name=".widget.pwdinput.PwdInputActivity" />
 
     </application>
 
