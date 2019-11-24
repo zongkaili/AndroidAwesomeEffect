@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kelly.test.aidl.AIDLTestActivity
+import com.kelly.test.aop.AopMainActivity
+import com.kelly.test.architect.mvp.login.LoginActivity
 import com.kelly.test.main.GridDividerItemDecoration
 import com.kelly.test.main.RecyclerAdapter
 import com.kelly.test.neteasy.musiclist.MusicListActivity
@@ -68,6 +70,8 @@ class MainActivity : AppCompatActivity() {
                     10 -> startActivity(Intent(this@MainActivity, MusicPlayActivity::class.java))
                     11 -> startActivity(Intent(this@MainActivity, ColorFilterActivity::class.java))
                     12 -> startActivity(Intent(this@MainActivity, PwdInputActivity::class.java))
+                    13 -> startActivity(Intent(this@MainActivity, AopMainActivity::class.java))
+                    14 -> startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                 }
             }
         })
@@ -88,6 +92,8 @@ class MainActivity : AppCompatActivity() {
         items.add(MainItem("网易云音乐播放界面", 10))
         items.add(MainItem("ColorFilter", 11))
         items.add(MainItem("自定义密码输入框", 12))
+        items.add(MainItem("AspectJ-AOP示例", 13))
+        items.add(MainItem("架构模式-MVP示例", 14))
         return items
     }
 

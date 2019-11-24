@@ -45,6 +45,11 @@
         <activity android:name=".widget.treeAnimation.TreeAnimationActivity" />
         <activity android:name=".widget.colorfilter.ColorFilterActivity" />
         <activity android:name=".widget.pwdinput.PwdInputActivity" />
+        <activity android:name=".aop.AopMainActivity" />
+        <activity android:name=".aop.AopLoginActivity" />
+        <activity android:name=".aop.AopCouponActivity" />
+        <activity android:name=".architect.mvp.LoginActivity" />
+        <activity android:name=".architect.mvp.login.LoginActivity" />
 
     </application>
 
