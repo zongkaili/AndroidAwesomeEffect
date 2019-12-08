@@ -10,6 +10,7 @@ import com.kelly.test.aop.SpUtils;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
 /**
@@ -17,6 +18,7 @@ import org.aspectj.lang.annotation.Pointcut;
  * data: 2019-11-24
  * desc:
  */
+@Aspect
 public class LoginCheckAspect {
     private static final String TAG = "Aop-Aspect-Login";
 
@@ -27,7 +29,7 @@ public class LoginCheckAspect {
     public void methodPointCut() {}
 
     //2.对切入点进行处理
-    @Around("methodPointCut")
+    @Around("methodPointCut()")
     public Object jointPoint(ProceedingJoinPoint jointPoint) throws Throwable {
         Context context = (Context) jointPoint.getThis();
         if (SpUtils.Companion.getBoolean(context, "isLogin")) {

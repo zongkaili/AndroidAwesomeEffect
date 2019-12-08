@@ -6,6 +6,7 @@ import com.kelly.test.aop.annotation.ClickBehavior;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
@@ -14,6 +15,7 @@ import org.aspectj.lang.reflect.MethodSignature;
  * data: 2019-11-24
  * desc:
  */
+@Aspect
 public class ClickBehaviorAspect {
     private static String TAG = "Aop-Aspect-Click";
 
@@ -44,7 +46,7 @@ public class ClickBehaviorAspect {
         Object result = jointPoint.proceed();//切面的方法
         long duration = System.currentTimeMillis() - begin;
         Log.d(TAG, "ClickBehavior Method End >>> ");
-        Log.d(TAG, String.format(" 统计了： %s功能，在%s类中的%s方法，用时%d ms",
+        Log.d(TAG, String.format(" 统计了： [%s]功能，在%s类中的%s方法，用时%d ms",
                 annotationName, className, methodName, duration));
 
         return result;
