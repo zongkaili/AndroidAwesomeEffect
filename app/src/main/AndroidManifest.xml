@@ -15,6 +15,9 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".javapoet.JPPersonalActivity" />
+        <activity android:name=".javapoet.JPOrderActivity" />
+        <activity android:name=".javapoet.JPMainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,20 +29,19 @@
         <service
                 android:name=".aidl.StudentManagerService"
                 android:process=":remote" />
-
         <service
                 android:name=".neteasy.playpage.service.MusicService"
                 android:enabled="true"
                 android:exported="true" />
 
-        <activity android:name=".aidl.AIDLTestActivity"/>
-        <activity android:name=".IrregularActivity"/>
-        <activity android:name=".ExplosionActivity"/>
-        <activity android:name=".SplashAnimActivity"/>
-        <activity android:name=".BezierActivity"/>
-        <activity android:name=".neteasy.musiclist.MusicListActivity"/>
-        <activity android:name=".neteasy.playpage.MusicPlayActivity"/>
-        <activity android:name=".PathMeasureActivity"/>
+        <activity android:name=".aidl.AIDLTestActivity" />
+        <activity android:name=".IrregularActivity" />
+        <activity android:name=".ExplosionActivity" />
+        <activity android:name=".SplashAnimActivity" />
+        <activity android:name=".BezierActivity" />
+        <activity android:name=".neteasy.musiclist.MusicListActivity" />
+        <activity android:name=".neteasy.playpage.MusicPlayActivity" />
+        <activity android:name=".PathMeasureActivity" />
         <activity android:name=".widget.svg.SvgChinaMapActivity" />
         <activity android:name=".widget.vLayout.VLayoutActivity" />
         <activity android:name=".widget.treeAnimation.TreeAnimationActivity" />
@@ -50,7 +52,6 @@
         <activity android:name=".aop.AopCouponActivity" />
         <activity android:name=".architect.mvp.LoginActivity" />
         <activity android:name=".architect.mvp.login.LoginActivity" />
-
     </application>
 
 </manifest>

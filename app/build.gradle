@@ -23,6 +23,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [content: 'hello javapoet']
+            }
+        }
     }
     buildTypes {
         release {
@@ -59,6 +65,10 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.10.0'
 
     implementation 'org.aspectj:aspectjrt:1.8.13'
+
+    implementation project(path: ':annotation')
+    annotationProcessor project(path: ':compiler')
+
 }
 
 //支持aspectj------------------>
@@ -88,7 +98,7 @@ variants.all { variant ->
 
         MessageHandler handler = new MessageHandler(true)
         new Main().run(args, handler)
-        for (IMessage message: handler.getMessages(null, true)) {
+        for (IMessage message : handler.getMessages(null, true)) {
             switch (message.getKind()) {
                 case IMessage.ABORT:
                 case IMessage.ERROR:
@@ -108,4 +118,3 @@ variants.all { variant ->
         }
     }
 }
-
