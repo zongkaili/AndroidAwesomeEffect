@@ -23,10 +23,14 @@ public class LeetCodeTest {
 //        String[] strs = new String[]{"flower", "f", "flight"};
 //        System.out.println(" longestCommonPrefix == " + longestCommonPrefix(strs));
 
-        List list = letterCombinations("238");
-        for (Object o : list) {
-            System.out.println(o);
-        }
+//        List list = letterCombinations("238");
+//        for (Object o : list) {
+//            System.out.println(o);
+//        }
+
+        ListNode node = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, null)))));
+        ListNode node1 = removeNthFromEnd(node, 2);
+        System.out.println(node1.val);
     }
 
     public static int reverse(int x) {
@@ -46,7 +50,8 @@ public class LeetCodeTest {
 
     /**
      * 将str转换为int
-     * @param str   "   -4193 with words " -----4193
+     *
+     * @param str "   -4193 with words " -----4193
      * @return
      */
     public static int myAtoi(String str) {
@@ -93,6 +98,7 @@ public class LeetCodeTest {
 
     /**
      * 13.罗马数字转整数
+     *
      * @param s
      * @return
      */
@@ -108,7 +114,7 @@ public class LeetCodeTest {
         map.put('M', 1000);
         int len = s.length();
         int sum = map.get(s.charAt(len - 1));
-        for (int i = len - 2; i >= 0 ; i--) {
+        for (int i = len - 2; i >= 0; i--) {
             if (map.get(s.charAt(i)) < sum) {
                 sum -= map.get(s.charAt(i));
             } else {
@@ -120,6 +126,7 @@ public class LeetCodeTest {
 
     /**
      * 14.最长公共前缀
+     *
      * @param strs
      * @return
      */
@@ -155,10 +162,12 @@ public class LeetCodeTest {
 
     /**
      * 17.电话号码的字母组合
+     *
      * @param digits
      * @return
      */
     private static Map<String, String> map = new HashMap<>();
+
     public static List<String> letterCombinations(String digits) {
         if (digits == null || digits.length() <= 0) return Collections.emptyList();
         map.put("2", "abc");
@@ -187,4 +196,41 @@ public class LeetCodeTest {
             helper(list, digits.substring(1), ans + letter);
         }
     }
+
+    /**
+     * 19. 删除链表的倒数第N个节点
+     * 例如：输入1->2->3->4->5->6 和 2   删除4后链表变为：1->2->3->5->6
+     * 返回头节点1
+     */
+    private static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
+
+    private static ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode preN = head;
+        ListNode afterPreN = head;
+        //先让双指针相差n个元素
+        while (n-- != 0) {
+            afterPreN = afterPreN.next;
+        }
+        if (afterPreN == null) {
+            //如果一开始后面的指针为null，则删除第一个元素
+            head = head.next;
+        } else {
+            while (afterPreN.next != null) {
+                //双指针同时向后移动，当后面的指针移动到最后的元素时(即直到afterPreN.next == null)，则前面的指针后面的元素即为要删除的元素
+                preN = preN.next;
+                afterPreN = afterPreN.next;
+            }
+            preN.next = preN.next.next;
+        }
+        return head;
+    }
+
 }
