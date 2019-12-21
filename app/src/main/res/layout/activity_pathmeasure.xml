@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <com.kelly.test.widget.PathMeasureView
+    <com.kelly.effect.widget.PathMeasureView
             android:id="@+id/pathMeasureView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -25,7 +25,7 @@
                 android:orientation="horizontal"
                 android:paddingTop="90dp">
 
-            <com.kelly.test.neteasy.musiclist.ui.RoundRectImageView
+            <com.kelly.effect.neteasy.musiclist.ui.RoundRectImageView
                     android:id="@+id/iv_header_poster"
                     android:layout_width="152dp"
                     android:layout_height="152dp"

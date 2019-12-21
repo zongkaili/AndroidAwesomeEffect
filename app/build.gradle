@@ -17,7 +17,7 @@ buildscript {//编译时用Aspect专门的编译器，不再使用传统的javac
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.kelly.test"
+        applicationId "com.kelly.effect"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1

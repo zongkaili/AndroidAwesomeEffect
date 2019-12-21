@@ -13,7 +13,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/pic_test"/>
 
-    <com.kelly.test.widget.SplashCanvasView
+    <com.kelly.effect.widget.SplashCanvasView
             android:id="@+id/splash"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

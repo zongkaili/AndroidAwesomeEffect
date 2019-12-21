@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         tools:context=".widget.pwdinput.PwdInputActivity">
 
-    <com.kelly.test.widget.pwdinput.PwdEditText
+    <com.kelly.effect.widget.pwdinput.PwdEditText
             android:id="@+id/etPwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

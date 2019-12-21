@@ -2,12 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:dist="http://schemas.android.com/apk/distribution"
         xmlns:tools="http://schemas.android.com/tools"
-        package="com.kelly.test">
+        package="com.kelly.effect">
 
     <dist:module dist:instant="true" />
 
     <application
-            android:name=".MyApplication"
+            android:name="com.kelly.effect.MyApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -15,10 +15,10 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".javapoet.JPPersonalActivity" />
-        <activity android:name=".javapoet.JPOrderActivity" />
-        <activity android:name=".javapoet.JPMainActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.kelly.effect.javapoet.JPPersonalActivity" />
+        <activity android:name="com.kelly.effect.javapoet.JPOrderActivity" />
+        <activity android:name="com.kelly.effect.javapoet.JPMainActivity" />
+        <activity android:name="com.kelly.effect.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,31 +27,31 @@
         </activity>
 
         <service
-                android:name=".aidl.StudentManagerService"
+                android:name="com.kelly.effect.aidl.StudentManagerService"
                 android:process=":remote" />
         <service
-                android:name=".neteasy.playpage.service.MusicService"
+                android:name="com.kelly.effect.neteasy.playpage.service.MusicService"
                 android:enabled="true"
                 android:exported="true" />
 
-        <activity android:name=".aidl.AIDLTestActivity" />
-        <activity android:name=".IrregularActivity" />
-        <activity android:name=".ExplosionActivity" />
-        <activity android:name=".SplashAnimActivity" />
-        <activity android:name=".BezierActivity" />
-        <activity android:name=".neteasy.musiclist.MusicListActivity" />
-        <activity android:name=".neteasy.playpage.MusicPlayActivity" />
-        <activity android:name=".PathMeasureActivity" />
-        <activity android:name=".widget.svg.SvgChinaMapActivity" />
-        <activity android:name=".widget.vLayout.VLayoutActivity" />
-        <activity android:name=".widget.treeAnimation.TreeAnimationActivity" />
-        <activity android:name=".widget.colorfilter.ColorFilterActivity" />
-        <activity android:name=".widget.pwdinput.PwdInputActivity" />
-        <activity android:name=".aop.AopMainActivity" />
-        <activity android:name=".aop.AopLoginActivity" />
-        <activity android:name=".aop.AopCouponActivity" />
+        <activity android:name="com.kelly.effect.aidl.AIDLTestActivity" />
+        <activity android:name="com.kelly.effect.IrregularActivity" />
+        <activity android:name="com.kelly.effect.ExplosionActivity" />
+        <activity android:name="com.kelly.effect.SplashAnimActivity" />
+        <activity android:name="com.kelly.effect.BezierActivity" />
+        <activity android:name="com.kelly.effect.neteasy.musiclist.MusicListActivity" />
+        <activity android:name="com.kelly.effect.neteasy.playpage.MusicPlayActivity" />
+        <activity android:name="com.kelly.effect.PathMeasureActivity" />
+        <activity android:name="com.kelly.effect.widget.svg.SvgChinaMapActivity" />
+        <activity android:name="com.kelly.effect.widget.vLayout.VLayoutActivity" />
+        <activity android:name="com.kelly.effect.widget.treeAnimation.TreeAnimationActivity" />
+        <activity android:name="com.kelly.effect.widget.colorfilter.ColorFilterActivity" />
+        <activity android:name="com.kelly.effect.widget.pwdinput.PwdInputActivity" />
+        <activity android:name="com.kelly.effect.aop.AopMainActivity" />
+        <activity android:name="com.kelly.effect.aop.AopLoginActivity" />
+        <activity android:name="com.kelly.effect.aop.AopCouponActivity" />
         <activity android:name=".architect.mvp.LoginActivity" />
-        <activity android:name=".architect.mvp.login.LoginActivity" />
+        <activity android:name="com.kelly.effect.architect.mvp.login.LoginActivity" />
     </application>
 
 </manifest>

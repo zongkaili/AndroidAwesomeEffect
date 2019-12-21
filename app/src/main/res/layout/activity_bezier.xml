@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <com.kelly.test.widget.irregularview.BezierView
+    <com.kelly.effect.widget.irregularview.BezierView
             android:id="@+id/bezierView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
