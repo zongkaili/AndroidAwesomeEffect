@@ -15,18 +15,21 @@ buildscript {//编译时用Aspect专门的编译器，不再使用传统的javac
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion androidId.compileSdkVersion
     defaultConfig {
-        applicationId "com.kelly.effect"
-        minSdkVersion 23
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        applicationId appId.app
+        minSdkVersion androidId.minSdkVersion
+        targetSdkVersion androidId.targetSdkVersion
+        versionCode androidId.versionCode
+        versionName androidId.versionName
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("boolean", "isRelease", String.valueOf(isRelease))
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [content: 'hello javapoet']
+                arguments = [moduleName: project.getName(), packageNameForAPT: packageNameForAPT]
             }
         }
     }
@@ -68,6 +71,12 @@ dependencies {
 
     implementation project(path: ':annotation')
     annotationProcessor project(path: ':compiler')
+
+    implementation project(path: ':common')
+    if (isRelease) {
+        implementation project(path: ':order')
+        implementation project(path: ':personal')
+    }
 
 }
 

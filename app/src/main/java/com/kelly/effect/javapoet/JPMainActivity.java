@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.kelly.annotation.ARouter;
+import com.kelly.modular.annotation.ARouter;
 import com.kelly.effect.R;
 
 @ARouter(path = "/app/JPMainActivity")
@@ -21,7 +21,5 @@ public class JPMainActivity extends AppCompatActivity {
     }
 
     public void jump(View view) {
-        Class targetClass = JPOrderActivity$$ARouter.findTargetClass("/app/JPOrderActivity");
-        startActivity(new Intent(this, targetClass));
     }
 }

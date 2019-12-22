@@ -1,3 +1,5 @@
+import javax.tools.JavaCompiler
+
 apply plugin: 'java-library'
 
 dependencies {
@@ -9,6 +11,11 @@ dependencies {
     implementation "com.squareup:javapoet:1.9.0"
     //依赖注解库
     implementation project(':annotation')
+}
+
+//java控制台输出中文乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }
 
 sourceCompatibility = "8"

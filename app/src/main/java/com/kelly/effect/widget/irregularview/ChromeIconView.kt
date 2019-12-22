@@ -40,7 +40,7 @@ class ChromeIconView @JvmOverloads constructor(context: Context, attrs: Attribut
         cy = (mHeight / 2).toFloat()
         bitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888)
         //创建新的画布解决图片的问题
-        canvasTemp = Canvas(bitmap)
+        canvasTemp = Canvas(bitmap!!)
     }
 
     override fun onDraw(canvas: Canvas?) {

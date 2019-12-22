@@ -1,0 +1,25 @@
+ext {
+    //用于动态切换组件化模式和集成化模式
+    //true : 集成化模式，子模块被集成到主模块，可打包整个项目apk，子模块不可独立运行
+    //false : 组件化模式，子模块独立运行，不被集成到主模块
+    isRelease = true
+
+    //用于存放APT生成的类文件
+    packageNameForAPT = "com.kelly.modular.apt"
+
+    androidId = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.2",
+            minSdkVersion    : 21,
+            targetSdkVersion : 29,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    appId = [
+            "app": "com.kelly.effect",
+            "order": "com.kelly.modular.order",
+            "personal": "com.kelly.modular.personal"
+    ]
+
+}
