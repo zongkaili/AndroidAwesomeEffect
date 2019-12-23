@@ -138,17 +138,15 @@ public class ARouterProcessor extends AbstractProcessor {
             } else {
                 throw new RuntimeException("@ARouter目前仅限用于Activity");
             }
-
             //临时存储以上信息，便于在后续遍历生成所需代码文件
             valueOfPathMap(bean);
-
-            TypeElement groupLoadType = elementsUtil.getTypeElement(Constants.AROUTER_GROUP);
-            TypeElement pathLoadType = elementsUtil.getTypeElement(Constants.AROUTER_PATH);
-            //1.生成路由的详细Path类文件，如：ARouter$$Path$$app
-            createPathFile(pathLoadType);
-            //2.生成路由组Group类文件，如：ARouter$$Group$$app
-            createGroupFile(groupLoadType, pathLoadType);
         }
+        TypeElement groupLoadType = elementsUtil.getTypeElement(Constants.AROUTER_GROUP);
+        TypeElement pathLoadType = elementsUtil.getTypeElement(Constants.AROUTER_PATH);
+        //1.生成路由的详细Path类文件，如：ARouter$$Path$$app
+        createPathFile(pathLoadType);
+        //2.生成路由组Group类文件，如：ARouter$$Group$$app
+        createGroupFile(groupLoadType, pathLoadType);
     }
 
      /*
