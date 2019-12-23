@@ -10,7 +10,7 @@ dependencies {
     //帮助通过类调用的形式来生成java代码
     implementation "com.squareup:javapoet:1.9.0"
     //依赖注解库
-    implementation project(':annotation')
+    implementation project(':arouter_annotation')
 }
 
 //java控制台输出中文乱码

@@ -15,7 +15,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".javapoet.JPMain2Activity"/>
+        <activity android:name=".javapoet.JPMainActivity"/>
+        <activity android:name=".javapoet.JPMain1Activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

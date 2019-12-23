@@ -79,8 +79,8 @@ public class ARouterProcessor extends AbstractProcessor {
         if (!EmptyUtils.isEmpty(options)) {
             moduleName = options.get(Constants.MODULE_NAME);
             packageNameForAPT = options.get(Constants.APT_PACKAGE);
-            messager.printMessage(Diagnostic.Kind.NOTE, "moduleName >>> " + moduleName);
-            messager.printMessage(Diagnostic.Kind.NOTE, "packageNameForAPT >>> " + packageNameForAPT);
+            messager.printMessage(Diagnostic.Kind.NOTE, "init, moduleName >>> " + moduleName);
+            messager.printMessage(Diagnostic.Kind.NOTE, "init, packageNameForAPT >>> " + packageNameForAPT);
         }
 
         if (EmptyUtils.isEmpty(moduleName) || EmptyUtils.isEmpty(packageNameForAPT)) {
@@ -121,7 +121,7 @@ public class ARouterProcessor extends AbstractProcessor {
         for (Element element : elements) {
             //获取每个元素的类信息
             TypeMirror elementMirror = element.asType();
-            messager.printMessage(Diagnostic.Kind.NOTE, " element--->" + elementMirror.toString());
+            messager.printMessage(Diagnostic.Kind.NOTE, "parseElements, element--->" + elementMirror.toString());
 
             //获取每个类上的@ARouter注解，对应的path值
             ARouter aRouter = element.getAnnotation(ARouter.class);
@@ -183,7 +183,7 @@ public class ARouterProcessor extends AbstractProcessor {
 
         //遍历分组，每一个分组创建一个路径类文件，如ARouter$$Path$$app
         for (Map.Entry<String, List<RouterBean>> entry : tempPathMap.entrySet()) {
-            //构造方法体：public Map<String, RouterBean> loadPath() {
+            //构造方法体：public Map<String, RouterBean> loadPath() {}
             MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(Constants.PATH_METHOD_NAME)
                     .addAnnotation(Override.class)//@Override
                     .addModifiers(Modifier.PUBLIC)//public修饰符
@@ -214,6 +214,7 @@ public class ARouterProcessor extends AbstractProcessor {
                         ClassName.get((TypeElement) bean.getElement()),
                         bean.getGroup(),
                         bean.getPath());
+                messager.printMessage(Diagnostic.Kind.NOTE, "createPathFile，添加语句 >>> " + bean.toString());
             }
 
 //            return pathMap;
@@ -222,7 +223,7 @@ public class ARouterProcessor extends AbstractProcessor {
             //生成类文件，如：ARouter$$Path$$app
             String finalClassName = Constants.PATH_FILE_NAME + entry.getKey();
             messager.printMessage(Diagnostic.Kind.NOTE,
-                    "APT生成路由Path类文件名为："
+                    "createPathFile，APT生成路由Path类文件名为："
                             + packageNameForAPT + "." + finalClassName);
 
             JavaFile.builder(packageNameForAPT,
@@ -289,6 +290,7 @@ public class ARouterProcessor extends AbstractProcessor {
                     Constants.GROUP_PARAMETER_NAME,
                     entry.getKey(),
                     ClassName.get(packageNameForAPT, entry.getValue()));
+            messager.printMessage(Diagnostic.Kind.NOTE, "createGroupFile，添加语句 >>> " + entry.getKey() + ", " + entry.getValue());
         }
 
         //return groupMap;
@@ -297,7 +299,7 @@ public class ARouterProcessor extends AbstractProcessor {
         //生成类文件: 如：ARouter$$Group$$app
         String finalClassName = Constants.GROUP_FILE_NAME + moduleName;
         messager.printMessage(Diagnostic.Kind.NOTE,
-                "APT生成路由Group类文件名为："
+                "createGroupFile，APT生成路由Group类文件名为："
                         + packageNameForAPT + "." + finalClassName);
         JavaFile.builder(packageNameForAPT,
                 TypeSpec.classBuilder(finalClassName)
@@ -319,7 +321,7 @@ public class ARouterProcessor extends AbstractProcessor {
             messager.printMessage(Diagnostic.Kind.ERROR, "@ARouter注解参数不合法，示例：/app/MainActivity");
             return;
         }
-        messager.printMessage(Diagnostic.Kind.NOTE, "valueOfPathMap >>> " + bean.toString());
+        messager.printMessage(Diagnostic.Kind.NOTE, "valueOfPathMap, >>> " + bean.toString());
         List<RouterBean> routerBeans = tempPathMap.get(bean.getGroup());
         if (EmptyUtils.isEmpty(routerBeans)) {
             routerBeans = new ArrayList<>();
@@ -365,4 +367,5 @@ public class ARouterProcessor extends AbstractProcessor {
         }
         return true;
     }
+
 }

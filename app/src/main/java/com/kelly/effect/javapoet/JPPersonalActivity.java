@@ -21,7 +21,7 @@
 //    }
 //
 //    public void jump(View view) {
-//        Class targetClass = JPMainActivity$$ARouter.findTargetClass("/app/JPMainActivity");
+//        Class targetClass = JPMain1Activity$$ARouter.findTargetClass("/app/JPMain1Activity");
 //        startActivity(new Intent(this, targetClass));
 //    }
 //}

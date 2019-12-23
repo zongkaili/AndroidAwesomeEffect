@@ -64,6 +64,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation project(path: ':common')
-    implementation project(path: ':annotation')
-    annotationProcessor project(path: ':compiler')
+    implementation project(path: ':arouter_annotation')
+    annotationProcessor project(path: ':arouter_compiler')
 }

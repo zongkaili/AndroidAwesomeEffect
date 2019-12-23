@@ -1,7 +1,5 @@
 package com.kelly.effect.javapoet;
 
-import android.app.Activity;
-
 import com.kelly.modular.api.core.ParameterLoad;
 
 /**
@@ -12,7 +10,7 @@ import com.kelly.modular.api.core.ParameterLoad;
 public class XActivity$$Parameter implements ParameterLoad {
     @Override
     public void loadParameter(Object target) {
-         JPMain2Activity t = (JPMain2Activity) target;
+         JPMainActivity t = (JPMainActivity) target;
          t.name = t.getIntent().getStringExtra("name");
          t.age = t.getIntent().getIntExtra("age", t.age);
     }

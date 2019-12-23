@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kelly.effect.aidl.AIDLTestActivity
 import com.kelly.effect.aop.AopMainActivity
 import com.kelly.effect.architect.mvp.login.LoginActivity
-import com.kelly.effect.javapoet.JPMain2Activity
+import com.kelly.effect.javapoet.JPMainActivity
 import com.kelly.effect.main.GridDividerItemDecoration
 import com.kelly.effect.main.RecyclerAdapter
 import com.kelly.effect.neteasy.musiclist.MusicListActivity
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                     12 -> startActivity(Intent(this@MainActivity, PwdInputActivity::class.java))
                     13 -> startActivity(Intent(this@MainActivity, AopMainActivity::class.java))
                     14 -> startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                    15 -> startActivity(Intent(this@MainActivity, JPMain2Activity::class.java))
+                    15 -> startActivity(Intent(this@MainActivity, JPMainActivity::class.java))
                 }
             }
         })
