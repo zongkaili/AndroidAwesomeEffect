@@ -15,6 +15,7 @@ import com.kelly.effect.main.GridDividerItemDecoration
 import com.kelly.effect.main.RecyclerAdapter
 import com.kelly.effect.neteasy.musiclist.MusicListActivity
 import com.kelly.effect.neteasy.playpage.MusicPlayActivity
+import com.kelly.effect.plugin.hook.HookTestActivity
 import com.kelly.effect.widget.colorfilter.ColorFilterActivity
 import com.kelly.effect.widget.pwdinput.PwdInputActivity
 import com.kelly.effect.widget.svg.SvgChinaMapActivity
@@ -74,6 +75,7 @@ class MainActivity : AppCompatActivity() {
                     13 -> startActivity(Intent(this@MainActivity, AopMainActivity::class.java))
                     14 -> startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     15 -> startActivity(Intent(this@MainActivity, JPMainActivity::class.java))
+                    16 -> startActivity(Intent(this@MainActivity, HookTestActivity::class.java))
                 }
             }
         })
@@ -97,6 +99,7 @@ class MainActivity : AppCompatActivity() {
         items.add(MainItem("AspectJ-AOP示例", 13))
         items.add(MainItem("架构模式-MVP示例", 14))
         items.add(MainItem("JavaPoet示例", 15))
+        items.add(MainItem("Hook插件化示例", 16))
         return items
     }
 
