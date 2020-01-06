@@ -3,6 +3,10 @@ package com.kelly.effect;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Environment;
@@ -15,11 +19,13 @@ import com.kelly.effect.plugin.hook.HookProxyActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.Map;
 
 import dalvik.system.DexClassLoader;
 import dalvik.system.PathClassLoader;
@@ -59,10 +65,19 @@ public class MyApplication extends Application {
             e.printStackTrace();
             Log.d("hook", "pluginToAppAction失败 >>> " + e.getMessage());
         }
+
+        //LoadedApk式插件化：切入点是ActivityThread$H中的handleMessage()-->LAUNCH_ACTIVIT
+        try {
+            customLoadedApkAction();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d("hook", "pluginToAppAction失败 >>> " + e.getMessage());
+        }
     }
 
     /**
      * 已过时，适用于Android API 25 Platform
+     *
      * @throws Exception
      */
     private void hookAms() throws Exception {
@@ -83,7 +98,7 @@ public class MyApplication extends Application {
                             //将需要启动的activity换成已注册的代理activity，让其能通过AMS的检查
                             Intent intent = new Intent(MyApplication.this, HookProxyActivity.class);
                             ////将包含目标activity的intent保存一份，便于后续在真正加载activity时取出再替换回来
-                            intent.putExtra("actionIntent", (Intent)args[2]);
+                            intent.putExtra("actionIntent", (Intent) args[2]);
                             args[2] = intent;
                         }
                         Log.d("hook", "拦截到了IActivityManager里面的方法 ： " + method.getName());
@@ -139,6 +154,22 @@ public class MyApplication extends Application {
                     Intent actionIntent = intent.getParcelableExtra("activityIntent");
                     if (actionIntent != null) {
                         intentField.set(obj, actionIntent);
+                    }
+
+                    /**
+                     * 对宿主和插件进行区分
+                     */
+                    Field activityInfoField = obj.getClass().getDeclaredField("activityInfo");
+                    activityInfoField.setAccessible(true);
+                    ActivityInfo activityInfo = (ActivityInfo) activityInfoField.get(obj);
+                    if (actionIntent.getPackage() != null) {
+                        activityInfo.applicationInfo.packageName = actionIntent.getPackage();
+                    } else {
+                        activityInfo.applicationInfo.packageName = actionIntent.getComponent().getPackageName();
+                        //根据源码LoadedApk中的initializeJavaContextClassLoader()方法得知：
+                        //可通过hook getPackageInfo()方法，让其返回值不为null，就不会抛出异常:
+                        //IllegalStateException("Unable to get package info for + mPackageName + "; is package not installed?")
+                        hookGetPackageInfo();
                     }
 
                 } catch (Exception e) {
@@ -213,6 +244,7 @@ public class MyApplication extends Application {
 
     /**
      * 针对于插件，重新定义Resources对象
+     *
      * @throws Exception
      */
     private void doLoadPluginLayout() throws Exception {
@@ -265,4 +297,106 @@ public class MyApplication extends Application {
     public AssetManager getAssets() {
         return mAssetManager == null ? super.getAssets() : mAssetManager;
     }
+
+    /**
+     * 自己创建一个LoadedApk.ClassLoader 添加到mPackages，此LoadedApk专门用来加载插件里面的class
+     */
+    private void customLoadedApkAction() throws Exception {
+        File file = new File(Environment.getExternalStorageDirectory() + File.separator + "p.apk");
+        if (!file.exists()) {
+            throw new FileNotFoundException("插件包不存在..." + file.getAbsolutePath());
+        }
+        String pluginPath = file.getAbsolutePath();
+
+        Class activityThreadClass = Class.forName("android.app.ActivityThread");
+        //执行ActivityThread类中的currentActivityThread()得到ActivityThread对象
+        Object activityThread = activityThreadClass.getMethod("currentActivityThread").invoke(null);
+        //拿到其中的mPackages对象
+        Field mPackagesField = activityThreadClass.getDeclaredField("mPackages");
+        mPackagesField.setAccessible(true);
+        Object mPackagesObj = mPackagesField.get(activityThread);
+
+        Map mPackages = (Map) mPackagesObj;
+
+        //执行方法：public final LoadedApk getPackageInfoNoCheck(ApplicationInfo ai, CompatibilityInfo compatInfo)
+        //得到LoadedApk对象
+        Class compatibilityInfoClass = Class.forName("android.content.res.CompatibilityInfo");
+        Method getPackageInfoNoCheckMethod = activityThreadClass.getMethod("getPackageInfoNoCheck", ApplicationInfo.class, compatibilityInfoClass);
+        ApplicationInfo applicationInfo = getApplicationInfoAction();
+        Field defaultCompatibilityInfoField = compatibilityInfoClass.getDeclaredField("DEFAULT_COMPATIBILITY_INFO");
+        defaultCompatibilityInfoField.setAccessible(true);
+        Object defaultCompatibilityInfoObj = defaultCompatibilityInfoField.get(null);
+        Object loadedApkObj = getPackageInfoNoCheckMethod.invoke(activityThread, applicationInfo, defaultCompatibilityInfoObj);
+
+        //常见新的classLoader并替换loadedApk中的classLoader
+        File fileDir = getDir("pluginPathDir", Context.MODE_PRIVATE);
+        ClassLoader classLoader = new PluginClassLoader(pluginPath, fileDir.getAbsolutePath(), null, getClassLoader());
+        Field classLoaderField = loadedApkObj.getClass().getDeclaredField("mClassLoader");
+        classLoaderField.setAccessible(true);
+        classLoaderField.set(loadedApkObj, classLoader);//替换LoadApk里面的ClassLoader对象
+
+        //添加自定义的loadedApk，加入到mPackages中
+        WeakReference weakReference = new WeakReference(loadedApkObj);
+        mPackages.put(applicationInfo.packageName, weakReference);
+    }
+
+    private ApplicationInfo getApplicationInfoAction() throws Exception {
+        Class packageParserClass = Class.forName("android.content.pm.PackageParser");
+
+        Object packageParser = packageParserClass.newInstance();
+
+        Class $PackageClass = Class.forName("android.content.pm.PackageParser$Package");
+        Class packageUserStateClass = Class.forName("android.content.pm.PackageUserState");
+
+        Method applicationInfoMethod = packageParserClass.getMethod("generateApplicationInfo", $PackageClass, int.class, packageUserStateClass);
+
+        File file = new File(Environment.getExternalStorageDirectory() + File.separator + "p.apk");
+        String pluginPath = file.getAbsolutePath();
+
+        Method packageMethod = packageParserClass.getMethod("parsePackage", File.class, int.class);
+        Object packageObj = packageMethod.invoke(packageParser, file, PackageManager.GET_ACTIVITIES);
+
+        ApplicationInfo applicationInfo = (ApplicationInfo) applicationInfoMethod.invoke(packageParser, packageObj, 0, packageUserStateClass.newInstance());
+        applicationInfo.publicSourceDir = pluginPath;
+        applicationInfo.sourceDir = pluginPath;
+
+        return applicationInfo;
+    }
+
+    class PluginClassLoader extends DexClassLoader {
+
+        public PluginClassLoader(String dexPath, String optimizedDirectory, String librarySearchPath, ClassLoader parent) {
+            super(dexPath, optimizedDirectory, librarySearchPath, parent);
+        }
+    }
+
+
+    private void hookGetPackageInfo() throws Exception {
+        Class activityThreadClass = Class.forName("android.app.ActivityThread");
+        Field sCurrentActivityThread = activityThreadClass.getDeclaredField("sCurrentActivityThread");
+        sCurrentActivityThread.setAccessible(true);
+
+        Field sPackageManagerField = activityThreadClass.getDeclaredField("sPackageManager");
+        sPackageManagerField.setAccessible(true);
+        Object packageManager = sPackageManagerField.get(null);//sPackageManager是一个静态属性，所以此处参数传null即可
+
+        Class iPackageManagerClass = Class.forName("android.content.pm.IPackageManager");
+
+        Object iPackageManagerProxy = Proxy.newProxyInstance(getClassLoader(),
+                new Class[]{iPackageManagerClass},//要监听的接口
+                new InvocationHandler() {
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        if ("getPackageInfo".equals(method.getName())) {
+                            //hook住getPackageInfo()，返回一个实例对象，让其不为null,就不会抛出异常
+                            //可见源码：LoadedApk类的initializeJavaContextClassLoader()
+                            return new PackageInfo();
+                        }
+                        return method.invoke(packageManager, args);
+                    }
+                });
+
+        sPackageManagerField.set(null, iPackageManagerProxy);
+    }
+
 }
