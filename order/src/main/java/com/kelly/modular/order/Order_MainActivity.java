@@ -49,7 +49,7 @@ public class Order_MainActivity extends BaseActivity {
         try {
             ARouterLoadPath path = clazz.newInstance();
             Map<String, RouterBean> pathMap = path.loadPath();
-            RouterBean routerBean = pathMap.get("/app/JPMain2Activity");
+            RouterBean routerBean = pathMap.get("/app/JPMainActivity");
             if (routerBean != null) {
                 Intent intent = new Intent(this, routerBean.getClazz());
                 intent.putExtra("name", "Kelly");

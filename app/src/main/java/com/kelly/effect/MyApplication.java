@@ -37,7 +37,7 @@ public class MyApplication extends Application {
         super.onCreate();
         UIUtils.getInstance(this);
 
-        /* ************一下代码适用于Android 25，26及以上平台api有所更改**************** */
+        /* ************以下代码适用于Android 25，26及以上平台api有所更改**************** */
 
         //通过hook源码的方式，能成功启动"一个没有在AndroidManifest.xml中注册的Activity"
         try {
