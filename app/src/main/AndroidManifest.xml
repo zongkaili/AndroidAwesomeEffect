@@ -15,8 +15,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".plugin.hook.HookProxyActivity"></activity>
-        <!-- <activity android:name=".plugin.hook.HookSampleActivity"/> -->
+        <activity android:name=".hotfix.HotFixActivity" />
+        <activity android:name=".plugin.hook.HookProxyActivity" /> <!-- <activity android:name=".plugin.hook.HookSampleActivity"/> -->
         <activity android:name=".plugin.hook.HookTestActivity" />
         <activity android:name=".javapoet.JPMainActivity" />
         <activity android:name=".javapoet.JPMain1Activity" />
@@ -53,6 +53,7 @@
         <activity android:name=".aop.AopLoginActivity" />
         <activity android:name=".aop.AopCouponActivity" />
         <activity android:name=".architect.mvp.login.LoginActivity" />
+        <activity android:name=".database.DbActivity" />
     </application>
 
 </manifest>

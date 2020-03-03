@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kelly.effect.aidl.AIDLTestActivity
 import com.kelly.effect.aop.AopMainActivity
 import com.kelly.effect.architect.mvp.login.LoginActivity
+import com.kelly.effect.database.DbActivity
 import com.kelly.effect.javapoet.JPMainActivity
 import com.kelly.effect.main.GridDividerItemDecoration
 import com.kelly.effect.main.RecyclerAdapter
@@ -76,6 +77,7 @@ class MainActivity : AppCompatActivity() {
                     14 -> startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     15 -> startActivity(Intent(this@MainActivity, JPMainActivity::class.java))
                     16 -> startActivity(Intent(this@MainActivity, HookTestActivity::class.java))
+                    17 -> startActivity(Intent(this@MainActivity, DbActivity::class.java))
                 }
             }
         })
@@ -100,6 +102,7 @@ class MainActivity : AppCompatActivity() {
         items.add(MainItem("架构模式-MVP示例", 14))
         items.add(MainItem("JavaPoet示例", 15))
         items.add(MainItem("Hook插件化示例", 16))
+        items.add(MainItem("数据库操作、分库、升级", 17))
         return items
     }
 
