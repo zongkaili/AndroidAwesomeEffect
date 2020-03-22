@@ -5,7 +5,7 @@ package com.kelly.effect.leetcode;
  * data: 2020/3/15
  * desc: 206.反转链表
  */
-public class reverseList {
+public class ReverseList {
     public static class ListNode {
         int val;
         ListNode next;
