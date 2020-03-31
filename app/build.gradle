@@ -75,6 +75,11 @@ dependencies {
 
     implementation 'org.aspectj:aspectjrt:1.8.13'
 
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4"
+
+    // debugImplementation because LeakCanary should only run in debug builds.
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
+
     implementation project(path: ':common')
     implementation project(path: ':arouter_annotation')
     annotationProcessor project(path: ':arouter_compiler')
