@@ -1,4 +1,4 @@
-package com.kelly.effect;
+package com.kelly.effect.leetcode;
 
 /**
  * author: zongkaili
@@ -11,7 +11,12 @@ public class SortTest {
     public static void main(String[] arg) {
 //        bubbleSort(arr);
 //        selectSort(arr);
-        insertSort(arr);
+//        insertSort(arr);
+        quicksort(arr, 0, arr.length - 1);
+
+        for (int a : arr) {
+            System.out.println(a);
+        }
     }
 
     /**
@@ -33,9 +38,6 @@ public class SortTest {
                     arr[j + 1] = temp;
                 }
             }
-        }
-        for (int a : arr) {
-            System.out.println(a);
         }
     }
 
@@ -61,10 +63,6 @@ public class SortTest {
             }
             arr[pos] = temp;
         }
-
-        for (int a : arr) {
-            System.out.println(a);
-        }
     }
 
     /**
@@ -86,9 +84,6 @@ public class SortTest {
             }
             arr[j + 1] = temp;
         }
-        for (int a : arr) {
-            System.out.println(a);
-        }
     }
 
     /**
@@ -98,31 +93,22 @@ public class SortTest {
      * @param end
      */
     private static void quicksort(int[] arr, int begin, int end) {
-        //先定义两个参数接收排序起始值和结束值
         int a = begin;
         int b = end;
-        //先判断a是否大于b
-
         if (a >= b) {
-            //没必要排序
             return;
         }
-        //基准数,默认设置为第一个值
-        int x = arr[a];
-
-        //循环
+        int x = arr[a];//基准数,默认设置为第一个值
         while (a < b) {
             //从后往前找,找到一个比基准数x小的值,赋给arr[a]
-            //如果a和b的逻辑正确--a<b ,并且最后一个值arr[b]>x,就一直往下找,直到找到后面的值大于x
+            //如果a和b的逻辑正确--a<b ,并且最后一个值arr[b]>x,就一直往下找,直到找到arr[b]小于x
             while (a < b && arr[b] >= x) {
                 b--;
             }
             //跳出循环,两种情况,一是a和b的逻辑不对了,a>=b,这时候排序结束.二是在后面找到了比x小的值
             if (a < b) {
-                //将这时候找到的arr[b]放到最前面arr[a]
-                arr[a] = arr[b];
-                //排序的起始位置后移一位
-                a++;
+                arr[a] = arr[b];//将这时候找到的arr[b]放到最前面arr[a]
+                a++;//排序的起始位置后移一位
             }
 
             //从前往后找,找到一个比基准数x大的值,放在最后面arr[b]
