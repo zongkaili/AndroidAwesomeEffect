@@ -5,7 +5,7 @@ package com.kelly.effect.leetcode;
  * data: 2020/3/15
  * desc: 206.反转链表
  */
-public class ReverseList {
+public class ListReverse {
     public static class ListNode {
         int val;
         ListNode next;
@@ -38,7 +38,6 @@ public class ReverseList {
         }
         //这里的cur就是最后一个节点
         ListNode cur = reverseList(head.next);
-        //这里请配合动画演示理解
         //如果链表是 1->2->3->4->5，那么此时的cur就是5
         //而head是4，head的下一个是5，下下一个是空
         //所以head.next.next 就是5->4

@@ -41,7 +41,7 @@ public class TreeTraversalLevelOrder {
     private static List<List<Integer>> levels = new ArrayList<List<Integer>>();
 
     private static List<List<Integer>> levelOrder(TreeNode root) {
-        //solution1: 递归
+        //solution1: 递归， 深度优先搜索
         if (root == null) return levels;
         helper(root, 0);
         return levels;
@@ -69,7 +69,7 @@ public class TreeTraversalLevelOrder {
 
     private static void helper(TreeNode node, int level) {
         if (levels.size() == level) {
-            levels.add(new ArrayList<Integer>());
+            levels.add(new ArrayList<>());
         }
 
         levels.get(level).add(node.val);
