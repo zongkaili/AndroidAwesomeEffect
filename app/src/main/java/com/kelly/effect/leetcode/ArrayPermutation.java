@@ -1,21 +1,30 @@
 package com.kelly.effect.leetcode;
 
+import com.google.gson.Gson;
+
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 数组全排列
  *
+ * @author zyb
  */
 public class ArrayPermutation {
 
     public static int count;
 
     public static void main(String[] args) {
-        permutation(new char[]{'1','2','3'}, 0,0);
+//        permutation(new char[]{'1','2','3'}, 0);
+
+        //第二种解法，效率低于第一种
+        List<List<Integer>> list = premute(new int[]{1, 2, 3});
+        System.out.println("全排列结果list >>> " + new Gson().toJson(list));
     }
 
-    public static void permutation(char chs[], int start, int index) {
-        System.out.println(start + "----" + index + "----" + Arrays.toString(chs) + count++);
+    public static void permutation(char chs[], int start) {
+        System.out.println(start + "----" + Arrays.toString(chs) + count++);
 
         if (start == chs.length - 1) {
             System.out.println(Arrays.toString(chs));
@@ -26,7 +35,7 @@ public class ArrayPermutation {
             System.out.println("   开始 " + start + "----" + i + "----" + Arrays.toString(chs));
             //把第一个元素分别与后面的元素进行交换，递归的调用其子数组进行排序
             swap(chs, i, start);
-            permutation(chs, start + 1, i);
+            permutation(chs, start + 1);
             swap(chs, i, start);
             System.out.println("   结束 " + start + "----" + i + "----" + Arrays.toString(chs));
             //子数组排序返回后要将第一个元素交换回来。
@@ -36,7 +45,6 @@ public class ArrayPermutation {
     }
 
     public static void swap(char chs[], int i, int start) {
-//        System.out.println(start + "---swap---" + i + "----");
         char temp;
         temp = chs[i];
         chs[i] = chs[start];
@@ -52,7 +60,42 @@ public class ArrayPermutation {
             p(cs, start++);
             swap(cs, i, start);
         }
-
     }
+
+
+    private static List<List<Integer>> res = new LinkedList<>();
+
+    private static List<List<Integer>> premute(int[] nums) {
+        LinkedList<Integer> track = new LinkedList<>();
+        backtrack(nums, track);
+        return res;
+    }
+
+    /**
+     * 路径:记录在 track 中
+     * 选择列表:nums 中不存在于 track 的那些元素
+     * 结束条件:nums 中的元素全都在 track 中出现
+     * @param nums
+     * @param track
+     */
+    private static void backtrack(int[] nums, LinkedList<Integer> track) {
+        // 触发结束条件
+        if (track.size() == nums.length) {
+            res.add(new LinkedList<>(track));
+            return;
+        }
+
+        for (int num : nums) {
+            if (track.contains(num)) {
+                continue;
+            }
+            track.add(num);
+            //进入下一层决策树
+            backtrack(nums, track);
+            //取消选择
+            track.removeLast();
+        }
+    }
+
 }
 
