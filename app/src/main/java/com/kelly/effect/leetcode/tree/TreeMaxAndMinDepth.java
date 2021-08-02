@@ -1,4 +1,4 @@
-package com.kelly.effect.leetcode;
+package com.kelly.effect.leetcode.tree;
 
 import android.util.Pair;
 

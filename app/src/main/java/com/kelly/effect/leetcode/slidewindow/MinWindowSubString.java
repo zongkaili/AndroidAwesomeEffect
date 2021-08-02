@@ -1,4 +1,4 @@
-package com.kelly.effect.leetcode;
+package com.kelly.effect.leetcode.slidewindow;
 
 import android.os.Build;
 
@@ -106,6 +106,7 @@ public class MinWindowSubString {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static void main(String[] args) {
+        //解法：滑动窗口
         String minWindow = minWindow("ADOBECODEBANC", "ABC");
         System.out.println(" 最小覆盖子串：minWindow = " + minWindow);
     }
