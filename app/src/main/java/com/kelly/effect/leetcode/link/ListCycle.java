@@ -1,4 +1,4 @@
-package com.kelly.effect.leetcode;
+package com.kelly.effect.leetcode.link;
 
 import java.util.HashSet;
 import java.util.Set;
