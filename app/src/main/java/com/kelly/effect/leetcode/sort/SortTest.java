@@ -1,4 +1,4 @@
-package com.kelly.effect.leetcode;
+package com.kelly.effect.leetcode.sort;
 
 /**
  * author: zongkaili
@@ -25,8 +25,6 @@ public class SortTest {
      * 基本思想：
      * 在要排序的一组数中，对当前还未排好序的范围内的全部数，自上而下对相邻的两个数依次进行比较和调整，
      * 让较大的数往下沉，较小的往上冒。即：每当两相邻的数比较后发现它们的排序与排序要求相反时，就将它们互换。
-     *
-     * @param arr
      */
     private static void bubbleSort(int[] arr) {
         if (arr == null || arr.length < 2) return;
@@ -47,8 +45,6 @@ public class SortTest {
      * 基本思想：
      * 在要排序的一组数中，选出最小的一个数与第一个位置的数交换；
      * 然后在剩下的数当中再找最小的与第二个位置的数交换，如此循环到倒数第二个数和最后一个数比较为止。
-     *
-     * @param arr
      */
     private static void selectSort(int[] arr) {
         if (arr == null || arr.length < 2) return;
@@ -71,8 +67,7 @@ public class SortTest {
      * 基本思想：
      * 在要排序的一组数中，假设前面(n-1) [n>=2] 个数已经是排好顺序的，现在要把第n个数插到前面的有序数中，
      * 使得这n个数也是排好顺序的。如此反复循环，直到全部排好顺序。
-     *
-     * @param arr
+     * arr = {47, 45, 67, 32, 54, 11, 4, 6, 90, 43, 65, 76, 88, 99};
      */
     private static void insertSort(int[] arr) {
         if (arr == null || arr.length < 2) return;
@@ -89,11 +84,15 @@ public class SortTest {
 
     /**
      * 快速排序
-     * @param arr
-     * @param begin
-     * @param end
+     * @param arr   待排序数据
+     * @param begin 初始为 0
+     * @param end   初始为 arr.length - 1
      */
     private static void quicksort(int[] arr, int begin, int end) {
+        //arr = {47, 45, 67, 32, 54, 11, 4, 6, 90, 43, 65, 76, 88, 99};
+        //arr = {43, 45, 67, 32, 54, 11, 4, 6, 90, 67, 65, 76, 88, 99};
+        //arr = {43, 45, 6, 32, 54, 11, 4, 54, 90, 67, 65, 76, 88, 99};
+        //arr = {43, 45, 6, 32, 4, 11, 47, 54, 90, 67, 65, 76, 88, 99};
         int a = begin;
         int b = end;
         if (a >= b) {

@@ -23,7 +23,7 @@ import java.util.Set;
  * 输出：tail connects to node index 1
  * 解释：链表中有一个环，其尾部连接到第二个节点。
  */
-public class ListCycle {
+public class LinkListCycle {
     static class ListNode {
         int val;
         ListNode next;
