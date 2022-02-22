@@ -10,8 +10,7 @@ import java.util.Queue;
  * author: zongkaili
  * data: 2020/4/6
  * desc: 102. 二叉树的层序遍历
- * 给你一个
- * 二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。
+ * 给你一个二叉树，请你返回其按 层序遍历 得到的节点值。 （即逐层地，从左到右访问所有节点）。
  * <p>
  * 示例：
  * 二叉树：[3,9,20,null,null,15,7],
@@ -40,31 +39,13 @@ public class TreeTraversalLevelOrder {
 
     private static List<List<Integer>> levels = new ArrayList<List<Integer>>();
 
+    /**
+     * 方法1：递归， 深度优先搜索
+     */
     private static List<List<Integer>> levelOrder(TreeNode root) {
-        //solution1: 递归， 深度优先搜索
         if (root == null) return levels;
         helper(root, 0);
         return levels;
-
-        //soluton2: 循环，栈
-//        List<List<Integer>> levels = new ArrayList<>();
-//        if (root == null) return levels;
-//
-//        Queue<TreeNode> queue = new LinkedList<>();
-//        queue.add(root);
-//        int level = 0;
-//        while (!queue.isEmpty()) {
-//            levels.add(new ArrayList<Integer>());
-//            int level_length = queue.size();
-//            for(int i = 0; i < level_length; ++i) {
-//                TreeNode node = queue.remove();
-//                levels.get(level).add(node.val);
-//                if (node.left != null) queue.add(node.left);
-//                if (node.right != null) queue.add(node.right);
-//            }
-//            level++;
-//        }
-//        return levels;
     }
 
     private static void helper(TreeNode node, int level) {
@@ -80,6 +61,30 @@ public class TreeTraversalLevelOrder {
         if (node.right != null) {
             helper(node.right, level + 1);
         }
+    }
+
+    /**
+     * 方法2：循环，栈
+     */
+    private static List<List<Integer>> levelOrder2(TreeNode root) {
+        List<List<Integer>> levels = new ArrayList<>();
+        if (root == null) return levels;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int level = 0;
+        while (!queue.isEmpty()) {
+            levels.add(new ArrayList<>());
+            int level_length = queue.size();
+            for(int i = 0; i < level_length; ++i) {
+                TreeNode node = queue.remove();
+                levels.get(level).add(node.val);
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
+            }
+            level++;
+        }
+        return levels;
     }
 
     /**
@@ -99,48 +104,16 @@ public class TreeTraversalLevelOrder {
      *   [20,9],
      *   [15,7]
      * ]
-     * @param root
-     * @return
      */
     private static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         if (root == null) {
-            return new ArrayList<List<Integer>>();
+            return new ArrayList<>();
         }
 
-        List<List<Integer>> results = new ArrayList<List<Integer>>();
+        List<List<Integer>> results = new ArrayList<>();
 
         //solution1: BFS（广度优先遍历）
-        // add the root element with a delimiter to kick off the BFS loop
-//        LinkedList<TreeNode> node_queue = new LinkedList<TreeNode>();
-//        node_queue.addLast(root);
-//        node_queue.addLast(null);
-//
-//        LinkedList<Integer> level_list = new LinkedList<Integer>();
-//        boolean is_order_left = true;
-//
-//        while (node_queue.size() > 0) {
-//            TreeNode curr_node = node_queue.pollFirst();
-//            if (curr_node != null) {
-//                if (is_order_left)
-//                    level_list.addLast(curr_node.val);
-//                else
-//                    level_list.addFirst(curr_node.val);
-//
-//                if (curr_node.left != null)
-//                    node_queue.addLast(curr_node.left);
-//                if (curr_node.right != null)
-//                    node_queue.addLast(curr_node.right);
-//
-//            } else {
-//                // we finish the scan of one level
-//                results.add(level_list);
-//                level_list = new LinkedList<Integer>();
-//                // prepare for the next level
-//                if (node_queue.size() > 0)
-//                    node_queue.addLast(null);
-//                is_order_left = !is_order_left;
-//            }
-//        }
+        BFS(root, results);
 
         //solution2: DFS （深度优先遍历）
         DFS(root, 0, results);
@@ -148,20 +121,60 @@ public class TreeTraversalLevelOrder {
         return results;
     }
 
-    private static void DFS(TreeNode node, int level, List<List<Integer>> results) {
+    /**
+     * 方法1：BFS（广度优先遍历）
+     */
+    private static void BFS(TreeNode root, List<List<Integer>> results) {
+        // add the root element with a delimiter to kick off the BFS loop
+        LinkedList<TreeNode> node_queue = new LinkedList<>();
+        node_queue.addLast(root);
+        node_queue.addLast(null);
+
+        LinkedList<Integer> level_list = new LinkedList<>();
+        boolean is_order_left = true;
+
+        while (node_queue.size() > 0) {
+            TreeNode curr_node = node_queue.pollFirst();
+            if (curr_node != null) {
+                if (is_order_left)
+                    level_list.addLast(curr_node.val);
+                else
+                    level_list.addFirst(curr_node.val);
+
+                if (curr_node.left != null)
+                    node_queue.addLast(curr_node.left);
+                if (curr_node.right != null)
+                    node_queue.addLast(curr_node.right);
+
+            } else {
+                // we finish the scan of one level
+                results.add(level_list);
+                level_list = new LinkedList<Integer>();
+                // prepare for the next level
+                if (node_queue.size() > 0)
+                    node_queue.addLast(null);
+                is_order_left = !is_order_left;
+            }
+        }
+    }
+
+    /**
+     * 方法2：DFS （深度优先遍历）
+     */
+    private static void DFS(TreeNode root, int level, List<List<Integer>> results) {
         if (level >= results.size()) {
-            LinkedList<Integer> newLevel = new LinkedList<Integer>();
-            newLevel.add(node.val);
+            LinkedList<Integer> newLevel = new LinkedList<>();
+            newLevel.add(root.val);
             results.add(newLevel);
         } else {
             if (level % 2 == 0)
-                results.get(level).add(node.val);
+                results.get(level).add(root.val);
             else
-                results.get(level).add(0, node.val);
+                results.get(level).add(0, root.val);
         }
 
-        if (node.left != null) DFS(node.left, level + 1, results);
-        if (node.right != null) DFS(node.right, level + 1, results);
+        if (root.left != null) DFS(root.left, level + 1, results);
+        if (root.right != null) DFS(root.right, level + 1, results);
     }
 
     /**
@@ -181,13 +194,23 @@ public class TreeTraversalLevelOrder {
      *   [9,20],
      *   [3]
      * ]
-     * @param root
-     * @return
      */
     private static List<List<Integer>> levelOrderBottom(TreeNode root) {
         if (root == null) return Collections.emptyList();
         List<List<Integer>> list = new LinkedList<>();
         //solution1: 宽度优先搜索
+        helperWithBreadthSearch(list, root);
+
+        //solution2: 深度优先搜索
+        helperWithDepthSearch(list, root, 0);
+
+        return list;
+    }
+
+    /**
+     * 方法1：宽度优先搜索
+     */
+    private static void helperWithBreadthSearch(List<List<Integer>> list, TreeNode root) {
         LinkedList<TreeNode> q = new LinkedList<>();
         q.add(root);
         while(!q.isEmpty()) {
@@ -205,13 +228,11 @@ public class TreeTraversalLevelOrder {
             }
             list.add(0, sub);
         }
-
-        //solution2: 深度优先搜索
-        helperWithDepthSearch(list, root, 0);
-
-        return list;
     }
 
+    /**
+     * 方法2：深度优先搜索
+     */
     private static void helperWithDepthSearch(List<List<Integer>> list, TreeNode root, int level) {
         if (root == null) return;
         if (level >= list.size()) {
