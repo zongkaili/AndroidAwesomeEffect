@@ -26,7 +26,7 @@ public class IntersectionList {
         ListNode tmpNode = headA;
         while (tmpNode != null) {
             nodes.add(tmpNode);
-            tmpNode = headA.next;
+            tmpNode = tmpNode.next;
         }
         tmpNode = headB;
         while (tmpNode != null) {

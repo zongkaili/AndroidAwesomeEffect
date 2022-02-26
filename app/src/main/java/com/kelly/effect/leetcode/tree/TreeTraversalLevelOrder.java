@@ -122,6 +122,7 @@ public class TreeTraversalLevelOrder {
     }
 
     /**
+     * 二叉树的锯齿形层次遍历
      * 方法1：BFS（广度优先遍历）
      */
     private static void BFS(TreeNode root, List<List<Integer>> results) {
@@ -159,6 +160,7 @@ public class TreeTraversalLevelOrder {
     }
 
     /**
+     * 二叉树的锯齿形层次遍历
      * 方法2：DFS （深度优先遍历）
      */
     private static void DFS(TreeNode root, int level, List<List<Integer>> results) {
@@ -208,6 +210,7 @@ public class TreeTraversalLevelOrder {
     }
 
     /**
+     * 二叉树的层次遍历 II --- 自底向上
      * 方法1：宽度优先搜索
      */
     private static void helperWithBreadthSearch(List<List<Integer>> list, TreeNode root) {
@@ -231,6 +234,7 @@ public class TreeTraversalLevelOrder {
     }
 
     /**
+     * 二叉树的层次遍历 II --- 自底向上
      * 方法2：深度优先搜索
      */
     private static void helperWithDepthSearch(List<List<Integer>> list, TreeNode root, int level) {

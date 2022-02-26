@@ -1,4 +1,4 @@
-package com.kelly.effect.leetcode;
+package com.kelly.effect.leetcode.stack;
 
 import java.util.Deque;
 import java.util.LinkedList;
