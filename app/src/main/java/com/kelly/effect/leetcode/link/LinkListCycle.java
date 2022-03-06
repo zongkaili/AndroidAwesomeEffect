@@ -36,9 +36,6 @@ public class LinkListCycle {
     /**
      * 判断链表是否有环
      * solution1 : 快慢指针
-     *
-     * @param head
-     * @return
      */
     private static boolean isListHasCycleSolution1(ListNode head) {
         ListNode fast = head;
@@ -56,18 +53,14 @@ public class LinkListCycle {
     /**
      * 判断链表是否有环
      * solution2 : HashSet
-     *
-     * @param head
-     * @return
      */
     private static boolean isListHasCycleSolution2(ListNode head) {
         Set<ListNode> set = new HashSet<>();
         while (head != null && head.next != null) {
             if (set.contains(head)) {
                 return true;
-            } else {
-                set.add(head);
             }
+            set.add(head);
             head = head.next;
         }
         return false;
@@ -76,9 +69,6 @@ public class LinkListCycle {
     /**
      * 环形链表 II : 找到环入口
      * solution1 : 快慢指针
-     *
-     * @param head
-     * @return
      */
     private static ListNode detectCycleSolution1(ListNode head) {
         ListNode fast = head;
@@ -104,9 +94,6 @@ public class LinkListCycle {
     /**
      * 环形链表 II : 找到环入口
      * solution2 : HashSet
-     *
-     * @param head
-     * @return
      */
     private static ListNode detectCycleSolution2(ListNode head) {
         Set<ListNode> set = new HashSet<>();

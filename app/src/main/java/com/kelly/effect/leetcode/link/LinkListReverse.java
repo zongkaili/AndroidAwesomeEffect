@@ -6,7 +6,7 @@ package com.kelly.effect.leetcode.link;
  * desc: 206.反转链表
  */
 public class LinkListReverse {
-    public static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
         ListNode(int val) {
@@ -18,20 +18,26 @@ public class LinkListReverse {
         }
     }
 
+    /**
+     * 方法1：循环
+     */
     public static ListNode reverseList(ListNode head) {
-        //solution1 : 循环
-//        ListNode pre = null;
-//        ListNode cur = head;
-//        ListNode tmp = null;
-//        while (cur != null) {
-//            tmp = cur.next;
-//            cur.next = pre;
-//            pre = cur;
-//            cur = tmp;
-//        }
-//        return pre;
+        ListNode pre = null;
+        ListNode cur = head;
+        ListNode tmp;
+        while (cur != null) {
+            tmp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+        return pre;
+    }
 
-        //solution2 : 递归
+    /**
+     * 方法2：递归
+     */
+    public static ListNode reverseList2(ListNode head) {
         if (head == null || head.next == null) {
             //递归终止条件是当前为空，或者下一个节点为空
             return head;
