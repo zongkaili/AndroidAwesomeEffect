@@ -32,16 +32,14 @@ public class TreeTraversalInorder {
     }
     private static List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-
-        //solution1: 递归
         helperWithRecursion(root, res);
-
-        //solution2: 基于栈的遍历
-//        helperWithStack(root, res);
-
+//      helperWithStack(root, res);
         return res;
     }
 
+    /**
+     * solution1: 递归
+     */
     private static void helperWithRecursion(TreeNode node, List<Integer> res) {
         if (node == null) {
             return;
@@ -55,6 +53,9 @@ public class TreeTraversalInorder {
         }
     }
 
+    /**
+     * solution2: 基于栈的遍历
+     */
     private static void helperWithStack(TreeNode node, List<Integer> res) {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode curr = node;

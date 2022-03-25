@@ -34,19 +34,14 @@ public class TreeTraversalPreorder {
 
     private static List<Integer> preorderTraversal(TreeNode node) {
         List<Integer> list = new ArrayList<>();
-        //solution1: 基于栈的遍历
-        helperWithStack(node, list);
-
-        //solution2: 迭代，宽度优先搜索
         helperWithIteration(node, list);
+//        helperWithStack(node, list);
         return list;
     }
 
     /**
-     * 宽度优先搜索，先压右孩子再压左孩子
      *
-     * @param node
-     * @param list
+     * solution1：迭代，宽度优先搜索，先压右孩子再压左孩子
      */
     private static void helperWithIteration(TreeNode node, List<Integer> list) {
         LinkedList<TreeNode> stack = new LinkedList<>();
@@ -66,6 +61,9 @@ public class TreeTraversalPreorder {
         }
     }
 
+    /**
+     * solution2: 基于栈的遍历
+     */
     private static void helperWithStack(TreeNode node, List<Integer> list) {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode curr = node;
@@ -79,4 +77,5 @@ public class TreeTraversalPreorder {
             curr = curr.right;
         }
     }
+
 }

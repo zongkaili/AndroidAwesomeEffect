@@ -33,9 +33,6 @@ public class TreeTraversalPostorder {
 
     /**
      * 二叉树的后序遍历，宽度优先搜索，先压左孩子后压右孩子
-     *
-     * @param root
-     * @return
      */
     private static List<Integer> postorderTraversal(TreeNode root) {
         LinkedList<TreeNode> stack = new LinkedList<>();
