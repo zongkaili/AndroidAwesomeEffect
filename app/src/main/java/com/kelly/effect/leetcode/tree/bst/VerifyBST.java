@@ -1,4 +1,4 @@
-package com.kelly.effect.leetcode.tree;
+package com.kelly.effect.leetcode.tree.bst;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -22,7 +22,7 @@ import java.util.LinkedList;
  * 输出：false
  * 解释：根节点的值是 5 ，但是右子节点的值是 4 。
  */
-class VerifyBinarySearchTree {
+class VerifyBST {
     private static class TreeNode {
         int val;
         TreeNode left;

@@ -1,4 +1,4 @@
-package com.kelly.effect.leetcode.tree;
+package com.kelly.effect.leetcode.tree.bst;
 
 import java.util.Random;
 
@@ -9,17 +9,15 @@ import java.util.Random;
  * 示例1：
  * 输入：nums = [-10,-3,0,5,9]
  * 输出：[0,-3,9,-10,null,5]
- * 解释：[0,-10,5,null,-3,null,9] 也将被视为正确答案：
+ * 解释：[0,-10,5,null,-3,null,9] 也将被视为正确答案
  *
  * 示例2：
  * 输入：nums = [1,3]
  * 输出：[3,1]
  * 解释：[1,3] 和 [3,1] 都是高度平衡二叉搜索树。
- *
- * @author zkl
  */
-public class TreeFromSortedArray {
-    private class TreeNode {
+public class SortedArrayToBST {
+    private static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -45,6 +43,11 @@ public class TreeFromSortedArray {
     }
 
     Random random = new Random();
+
+    /**
+     * 时间复杂度：O(n)，其中 n 是数组的长度。每个数字只访问一次。
+     * 空间复杂度：O(log n)，其中 n 是数组的长度。空间复杂度不考虑返回值，因此空间复杂度主要取决于递归栈的深度，递归栈的深度是 O(log n)。
+     */
     private TreeNode buildBinaryTree(int[] nums, int left, int right) {
         if (left > right) {
             return null;

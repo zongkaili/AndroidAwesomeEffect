@@ -80,12 +80,12 @@ class QueueByStack {
         }
 
         // Removes the element from in front of queue.
-        public void pop() {
+        public int pop() {
             if (s2.isEmpty()) {
                 while (!s1.isEmpty())
                     s2.push(s1.pop());
             }
-            s2.pop();
+            return s2.pop();
         }
 
         // Get the front element.
