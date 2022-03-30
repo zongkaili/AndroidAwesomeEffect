@@ -71,9 +71,6 @@ public class ClimbStairs {
      * 爬楼梯：动态规划
      * 时间复杂度：O(n)，单循环到n 。
      * 空间复杂度：O(n)，d 数组用了 n 的空间。
-     *
-     * @param n
-     * @return
      */
     private static int climbStairsWithDynamicProgramming(int n) {
         if (n == 1 || n == 2) {
@@ -99,10 +96,6 @@ public class ClimbStairs {
      * <p>
      * 时间复杂度：O(2^n)。
      * 空间复杂度：O(n)。
-     *
-     * @param i
-     * @param n
-     * @return
      */
     private static int climb_Stairs(int i, int n) {
         if (i > n) {
@@ -119,11 +112,6 @@ public class ClimbStairs {
      * 把每一步的结果存储在 memo 数组之中，每当函数再次被调用，我们就直接从 memo 数组返回结果。
      * 时间复杂度：O(n)，树形递归的大小可以达到 n。
      * 空间复杂度：O(n)，递归树的深度可以达到 n。
-     *
-     * @param i
-     * @param n
-     * @param memo
-     * @return
      */
     private static int climb_Stairs(int i, int n, int[] memo) {
         if (i > n) {
@@ -143,9 +131,6 @@ public class ClimbStairs {
      * 爬楼梯：斐波拉契数列
      * 时间复杂度：O(n)，单循环到 n，需要计算第 n 个斐波那契数。
      * 空间复杂度：O(1)，使用常量级空间。
-     *
-     * @param n
-     * @return
      */
     private static int climbStairsWithFibonacci(int n) {
         if (n == 1) {
@@ -165,9 +150,6 @@ public class ClimbStairs {
      * 爬楼梯：斐波拉契数列----优化版
      * 时间复杂度：O(log(n))，pow 方法将会用去 log(n) 的时间。
      * 空间复杂度：O(1)，使用常量级空间。
-     *
-     * @param n
-     * @return
      */
     private static int climbStairsWithFibonacciPlus(int n) {
         double sqrt5 = Math.sqrt(5);
@@ -179,9 +161,6 @@ public class ClimbStairs {
      * 爬楼梯：Binets 方法
      * 时间复杂度：O(log(n))，遍历 log(n) 位。
      * 空间复杂度：O(1)，使用常量级空间。
-     *
-     * @param n
-     * @return
      */
     private static int climbStairsWithBinets(int n) {
         int[][] q = {{1, 1}, {1, 0}};
@@ -213,11 +192,11 @@ public class ClimbStairs {
 
     /**
      * 746.使用最小花费爬楼梯
-     * 数组的每个索引做为一个阶梯，第 i 个阶梯对应着一个非负数的体力花费值 cost[i](索引从0开始)。
+     * 数组的每个索引做为一个阶梯，第i 个阶梯对应着一个非负数的体力花费值cost[i](索引从0开始)。
      * 每当你爬上一个阶梯你都要花费对应的体力花费值，然后你可以选择继续爬一个阶梯或者爬两个阶梯。
      * 您需要找到达到楼层顶部的最低花费。在开始时，你可以选择从索引为 0 或 1 的元素作为初始阶梯。
      * <p>
-     * 示例 1:
+     * 示例1:
      * 输入: cost = [10, 15, 20]
      * 输出: 15
      * 解释: 最低花费是从cost[1]开始，然后走两步即可到阶梯顶，一共花费15。
@@ -228,14 +207,11 @@ public class ClimbStairs {
      * 解释: 最低花费方式是从cost[0]开始，逐个经过那些1，跳过cost[3]，一共花费6。
      * <p>
      * 注意：
-     * cost 的长度将会在 [2, 1000]。
-     * 每一个 cost[i] 将会是一个Integer类型，范围为 [0, 999]。
+     * cost的长度将会在[2, 1000]。
+     * 每一个cost[i] 将会是一个Integer类型，范围为[0, 999]。
      * <p>
      * 时间复杂度：O(N)。N 指的是 cost 的长度
      * 空间复杂度：O(1)，只使用了 f1, f2。
-     *
-     * @param cost
-     * @return
      */
     private static int minCostClimbingStairs(int[] cost) {
         /*
