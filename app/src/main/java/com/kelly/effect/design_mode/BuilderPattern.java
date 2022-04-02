@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Copyright (c) 2014-2022 Zuoyebang, All rights reserved.
+ * 建造者模式（Builder Pattern）使用多个简单的对象一步一步构建成一个复杂的对象。
+ * 这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。
+ * 一个 Builder 类会一步一步构造最终的对象。该 Builder 类是独立于其他对象的。
  *
- * @author zongkaili | zongkaili@zuoyebang.com
- * @version 1.0.0 | 2022/4/2 | zongkaili 初始版本
- * @description
- * @date 2022/4/2 3:19 下午
+ * @author zyb
  */
 public class BuilderPattern {
     public interface Item {
         String name();
+
         Packing packing();
+
         float price();
     }
 
@@ -109,11 +110,11 @@ public class BuilderPattern {
     public static class Meal {
         private final List<Item> items = new ArrayList<>();
 
-        public void addItem(Item item){
+        public void addItem(Item item) {
             items.add(item);
         }
 
-        public float getCost(){
+        public float getCost() {
             float cost = 0.0f;
             for (Item item : items) {
                 cost += item.price();
@@ -121,11 +122,11 @@ public class BuilderPattern {
             return cost;
         }
 
-        public void showItems(){
+        public void showItems() {
             for (Item item : items) {
-                System.out.print("Item : "+item.name());
-                System.out.print(", Packing : "+item.packing().pack());
-                System.out.println(", Price : "+item.price());
+                System.out.print("Item : " + item.name());
+                System.out.print(", Packing : " + item.packing().pack());
+                System.out.println(", Price : " + item.price());
             }
         }
     }
@@ -134,14 +135,14 @@ public class BuilderPattern {
      * 实际的 Builder 类，负责创建 Meal
      */
     public static class MealBuilder {
-        public Meal prepareVegMeal (){
+        public Meal prepareVegMeal() {
             Meal meal = new Meal();
             meal.addItem(new VegBurger());
             meal.addItem(new Coke());
             return meal;
         }
 
-        public Meal prepareNonVegMeal (){
+        public Meal prepareNonVegMeal() {
             Meal meal = new Meal();
             meal.addItem(new ChickenBurger());
             meal.addItem(new Pepsi());
