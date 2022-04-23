@@ -1,5 +1,7 @@
 package com.kelly.effect.leetcode.tree;
 
+import com.kelly.effect.leetcode.tree.base.TreeNode;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -28,19 +30,6 @@ import java.util.Queue;
  * 注意:合并必须从两个树的根节点开始。
  */
 public class TreeMerge {
-
-    private class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-  }
 
     /**
      * 方法1：深度优先搜索
