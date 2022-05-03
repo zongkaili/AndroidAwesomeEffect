@@ -1,4 +1,4 @@
-package com.kelly.effect.leetcode.tree.base;
+package com.kelly.effect.leetcode.tree;
 
 /**
  * author: zongkaili

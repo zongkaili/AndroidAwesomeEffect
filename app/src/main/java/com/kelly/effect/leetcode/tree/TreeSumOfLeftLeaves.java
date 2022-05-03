@@ -1,7 +1,5 @@
 package com.kelly.effect.leetcode.tree;
 
-import com.kelly.effect.leetcode.tree.base.TreeNode;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
