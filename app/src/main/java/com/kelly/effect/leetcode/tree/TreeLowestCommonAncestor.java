@@ -33,15 +33,6 @@ import java.util.Set;
  * 输出：1
  */
 class TreeLowestCommonAncestor {
-    private class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     /**
      * 方法一：递归

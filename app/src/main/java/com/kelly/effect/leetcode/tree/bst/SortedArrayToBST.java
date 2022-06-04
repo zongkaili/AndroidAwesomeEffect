@@ -1,5 +1,7 @@
 package com.kelly.effect.leetcode.tree.bst;
 
+import com.kelly.effect.leetcode.tree.TreeNode;
+
 import java.util.Random;
 
 /**
@@ -17,18 +19,6 @@ import java.util.Random;
  * 解释：[1,3] 和 [3,1] 都是高度平衡二叉搜索树。
  */
 public class SortedArrayToBST {
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode() { }
-        TreeNode(int val) { this.val = val; }
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     /**
      * 方法：中序遍历

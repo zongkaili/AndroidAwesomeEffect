@@ -27,15 +27,6 @@ import java.util.Queue;
  * ]
  */
 public class TreeTraversalLevelOrder {
-    private class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     private static List<List<Integer>> levels = new ArrayList<List<Integer>>();
 

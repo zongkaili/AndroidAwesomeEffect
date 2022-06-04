@@ -21,15 +21,6 @@ import java.util.TreeSet;
  * 输出: [3,2,1]
  */
 public class TreeTraversalPostorder {
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
 
     /**
      * 二叉树的后序遍历，宽度优先搜索，先压左孩子后压右孩子

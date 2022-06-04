@@ -32,15 +32,6 @@ package com.kelly.effect.leetcode.tree;
  * 返回 false 。
  */
 public class TreeBalance {
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     private static boolean treeIsBalanced(TreeNode root) {
         if (root == null) {

@@ -24,15 +24,6 @@ import java.util.Queue;
  * 9   6 3   1
  */
 public class TreeInvert {
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 
     private TreeNode invertTree(TreeNode root) {
         if (root == null) {

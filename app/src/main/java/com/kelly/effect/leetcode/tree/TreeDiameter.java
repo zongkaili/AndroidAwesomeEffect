@@ -18,18 +18,6 @@ package com.kelly.effect.leetcode.tree;
  * 注意：两结点之间的路径长度是以它们之间边的数目表示。
  */
 public class TreeDiameter {
-    private class TreeNode {
-      int val;
-      TreeNode left;
-      TreeNode right;
-      TreeNode() {}
-      TreeNode(int val) { this.val = val; }
-      TreeNode(int val, TreeNode left, TreeNode right) {
-          this.val = val;
-          this.left = left;
-          this.right = right;
-      }
-   }
 
    int diameter;
    private int diameterOfBinaryTree(TreeNode root) {

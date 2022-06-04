@@ -1,5 +1,7 @@
 package com.kelly.effect.leetcode.tree.bst;
 
+import com.kelly.effect.leetcode.tree.TreeNode;
+
 /**
  * author: zongkaili
  * data: 2022/3/28
@@ -16,24 +18,6 @@ package com.kelly.effect.leetcode.tree.bst;
  * 输出：[]
  */
 class SearchBST {
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     /**
      * 方法1：递归

@@ -14,16 +14,6 @@ import java.util.Queue;
  */
 public class TreeMaxAndMinDepth {
 
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     /**
      * 二叉树最大深度。
      * 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
@@ -36,8 +26,6 @@ public class TreeMaxAndMinDepth {
      *     /  \
      *    15   7
      * 返回它的最大深度 3 。
-     * @param node
-     * @return
      */
     private static int getTreeMaxDepth(TreeNode node) {
         //solution1: 递归
@@ -82,8 +70,6 @@ public class TreeMaxAndMinDepth {
      *     /  \
      *    15   7
      * 返回它的最小深度  2.
-     * @param node
-     * @return
      */
     private static int getTreeMinDepth(TreeNode node) {
         //solution1: 递归

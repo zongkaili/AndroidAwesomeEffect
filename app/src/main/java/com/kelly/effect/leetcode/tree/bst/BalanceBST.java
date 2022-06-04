@@ -1,5 +1,7 @@
 package com.kelly.effect.leetcode.tree.bst;
 
+import com.kelly.effect.leetcode.tree.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,24 +22,6 @@ import java.util.List;
  * 输出: [2,1,3]
  */
 class BalanceBST {
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     /**
      * 方法：贪心构造

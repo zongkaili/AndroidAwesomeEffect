@@ -22,15 +22,6 @@ import java.util.Stack;
  * 输出: [1,2,3]
  */
 public class TreeTraversalPreorder {
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
 
     private static List<Integer> preorderTraversal(TreeNode node) {
         List<Integer> list = new ArrayList<>();

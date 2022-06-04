@@ -20,7 +20,7 @@ import java.util.Map;
  * 哈希表 + 双向链表
  */
 class LRUCache {
-    class DLinkedNode {
+    static class DLinkedNode {
         int key;
         int value;
         DLinkedNode prev;

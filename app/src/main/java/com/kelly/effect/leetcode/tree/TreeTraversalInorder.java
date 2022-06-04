@@ -22,14 +22,7 @@ import java.util.Stack;
  * 输出: [1,3,2]
  */
 public class TreeTraversalInorder {
-    private static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int val) {
-            this.val = val;
-        }
-    }
+
     private static List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         helperWithRecursion(root, res);
