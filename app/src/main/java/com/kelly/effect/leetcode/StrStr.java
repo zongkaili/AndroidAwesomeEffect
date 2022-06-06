@@ -16,7 +16,7 @@ package com.kelly.effect.leetcode;
  * 输入：haystack = "", needle = ""
  * 输出：0
  */
-public class strStr {
+public class StrStr {
     public static void main(String[] args) {
         System.out.println("result: " + strStr("hello", "llo"));
     }
@@ -28,16 +28,16 @@ public class strStr {
     public static int strStr(String haystack, String needle) {
         int n = haystack.length();
         int m = needle.length();
-        for (int i = 0; i < n - m; i++) {
+        for (int i = 0; i <= n - m; i++) {
             boolean flag = true;
             for (int j = 0; j < m; j++) {
                 if (haystack.charAt(i + j) != needle.charAt(j)) {
                     flag = false;
                     break;
                 }
-                if (flag) {
-                    return 1;
-                }
+            }
+            if (flag) {
+                return i;
             }
         }
         return -1;
