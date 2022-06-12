@@ -18,6 +18,10 @@ package com.kelly.effect.leetcode;
  * 解释: 2 不存在 nums 中因此返回 -1
  */
 final class BinarySearch {
+    /**
+     * 时间复杂度：O(log n)，其中 n 是数组的长度。
+     * 空间复杂度：O(1)。
+     */
     public int search(int[] nums, int target) {
         int low = 0, high = nums.length - 1;
         while (low <= high) {
