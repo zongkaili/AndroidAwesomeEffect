@@ -1,1 +1,2 @@
 include ':app', ':arouter_annotation', ':arouter_compiler', ':personal', ':order', ':common', ':arouter_api'
+include ':practice'
