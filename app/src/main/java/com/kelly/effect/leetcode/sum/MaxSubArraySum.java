@@ -43,4 +43,29 @@ class MaxSubArraySum {
         }
         return maxSum;
     }
+
+    /**
+     * 变种：不能选相邻的数字。
+     * 假设给定一串数字{1, 2, 4, 1, 7, 8, 3}，我们要从中选择若干个数，使最后的和达到最大。
+     * 比如：如果我们选了第一个数字1，那么我们就不能选2，如果我们选择了数字4，那么我们就不能选择与它相邻的2和1。
+     */
+    public int maxSum(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        if (nums.length == 2) {
+            return Math.max(nums[0], nums[1]);
+        }
+        int curNum = nums[0];
+        int maxSum = nums[0];
+        for (int i = 2; i < nums.length; i += 2) {
+            curNum = Math.max(nums[i], nums[i] + curNum);
+            maxSum = Math.max(curNum, maxSum);
+        }
+        return maxSum;
+    }
+
 }
