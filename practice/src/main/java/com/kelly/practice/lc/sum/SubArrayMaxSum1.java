@@ -18,10 +18,12 @@ package com.kelly.practice.lc.sum;
  * 输入：nums = [5,4,-1,7,8]
  * 输出：23
  */
-class MaxSubArraySum {
+class SubArrayMaxSum1 {
 
     /**
      * 方法一：动态规划
+     * 时间复杂度：O(n)，其中 n 为 nums 数组的长度。我们只需要遍历一遍数组即可求得答案。
+     * 空间复杂度：O(1)。我们只需要常数空间存放若干变量。
      */
     public int maxSubArray(int[] nums) {
         int curNum = nums[0];

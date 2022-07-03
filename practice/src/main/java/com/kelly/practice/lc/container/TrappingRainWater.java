@@ -1,4 +1,4 @@
-package com.kelly.practice.lc;
+package com.kelly.practice.lc.container;
 
 import java.util.Deque;
 import java.util.LinkedList;

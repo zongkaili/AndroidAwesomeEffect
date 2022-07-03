@@ -11,7 +11,7 @@ package com.kelly.practice.lc.sum;
  * 输出: 6
  * 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
  */
-public class MaxSubArray {
+public class SubArrayMaxSum {
 
     public static void main(String[] args) {
         System.out.println(" result >>> " + maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
@@ -55,21 +55,21 @@ public class MaxSubArray {
     private static int crossSum(int[] nums, int left, int right, int p) {
         if (left == right) return nums[left];
 
-        int leftSubsum = Integer.MIN_VALUE;
+        int leftSubSum = Integer.MIN_VALUE;
         int currSum = 0;
         for (int i = p; i > left - 1; --i) {
             currSum += nums[i];
-            leftSubsum = Math.max(leftSubsum, currSum);
+            leftSubSum = Math.max(leftSubSum, currSum);
         }
 
-        int rightSubsum = Integer.MIN_VALUE;
+        int rightSubSum = Integer.MIN_VALUE;
         currSum = 0;
         for (int i = p + 1; i < right + 1; ++i) {
             currSum += nums[i];
-            rightSubsum = Math.max(rightSubsum, currSum);
+            rightSubSum = Math.max(rightSubSum, currSum);
         }
 
-        return leftSubsum + rightSubsum;
+        return leftSubSum + rightSubSum;
     }
 
 }
