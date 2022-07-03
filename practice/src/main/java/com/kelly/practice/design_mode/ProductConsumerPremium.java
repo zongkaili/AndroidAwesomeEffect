@@ -1,4 +1,4 @@
-package com.kelly.effect.design_mode;
+package com.kelly.practice.design_mode;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

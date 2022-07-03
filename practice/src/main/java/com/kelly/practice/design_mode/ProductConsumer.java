@@ -1,4 +1,4 @@
-package com.kelly.effect.design_mode;
+package com.kelly.practice.design_mode;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
@@ -24,11 +24,12 @@ public class ProductConsumer {
      * 2.判断->干活->通知
      */
     static class Data {
+        private final int MAX = 10;// 容量
         private int num = 0;
 
         public synchronized void increment() {
             //判断
-            while (num != 0) {
+            while (num >= MAX) {
                 try {
                     this.wait();
                 } catch (InterruptedException e) {

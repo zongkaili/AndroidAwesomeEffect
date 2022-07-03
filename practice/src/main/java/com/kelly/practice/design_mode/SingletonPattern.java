@@ -1,4 +1,4 @@
-package com.kelly.effect.design_mode;
+package com.kelly.practice.design_mode;
 
 /**
  * author: zongkaili

@@ -1,4 +1,4 @@
-package com.kelly.effect.multi_thread;
+package com.kelly.practice.multi_thread;
 
 import java.util.concurrent.CyclicBarrier;
 
