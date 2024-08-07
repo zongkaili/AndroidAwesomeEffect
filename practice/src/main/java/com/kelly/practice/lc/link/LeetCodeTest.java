@@ -52,7 +52,6 @@ public class LeetCodeTest {
      * 将str转换为int
      *
      * @param str "   -4193 with words " -----4193
-     * @return
      */
     public static int myAtoi(String str) {
         if (str == null || str.trim().length() == 0) {
@@ -98,9 +97,6 @@ public class LeetCodeTest {
 
     /**
      * 13.罗马数字转整数
-     *
-     * @param s
-     * @return
      */
     public static int romanToInt(String s) {
         if (s == null || s.isEmpty()) return 0;
@@ -126,9 +122,6 @@ public class LeetCodeTest {
 
     /**
      * 14.最长公共前缀
-     *
-     * @param strs
-     * @return
      */
     public static String longestCommonPrefix(String[] strs) {
         //解法1：
@@ -162,9 +155,6 @@ public class LeetCodeTest {
 
     /**
      * 17.电话号码的字母组合
-     *
-     * @param digits
-     * @return
      */
     private static Map<String, String> map = new HashMap<>();
 
