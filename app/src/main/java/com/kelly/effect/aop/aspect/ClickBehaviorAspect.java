@@ -20,7 +20,8 @@ public class ClickBehaviorAspect {
     private static String TAG = "Aop-Aspect-Click";
 
     //1.用到的注解，放到当前的切入点进行处理（找到需要处理的切入点）
-    //execution : 以方法执行时作为切点，触发Aspect类
+    // call : 以调用方法的位置作为切点，插入在函数体外面。
+    //execution : 以方法执行时作为切点，触发Aspect类，插入在函数体内部。
     //* *(..) : 通配符，表示这个类的所有方法
     @Pointcut("execution(@com.kelly.effect.aop.annotation.ClickBehavior * *(..))")
     public void methodPointCut() {}

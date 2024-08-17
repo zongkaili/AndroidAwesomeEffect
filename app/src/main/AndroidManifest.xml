@@ -6,6 +6,9 @@
 
     <dist:module dist:instant="true" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
             android:name=".MyApplication"
             android:allowBackup="true"
@@ -15,7 +18,6 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".hotfix.HotFixActivity" />
         <activity android:name=".plugin.hook.HookProxyActivity" /> <!-- <activity android:name=".plugin.hook.HookSampleActivity"/> -->
         <activity android:name=".plugin.hook.HookTestActivity" />
         <activity android:name=".javapoet.JPMainActivity" />
